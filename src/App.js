@@ -1,24 +1,73 @@
 import logo from './logo.svg';
 import './App.css';
+import { useState } from 'react'
 
 function App() {
+  const [weight,setWeight] = useState(0);
+  const [bottles,setBottles] = useState(0);
+  const [time,setTime] = useState(0);
+  const [gender,setGender] = useState('Male');
+  const [result,setResult] = useState(0);
+
+  function countLevel(e) {
+    e.preventDefault();
+    let litres = bottles * 0.33
+    let grams = litres * 8 * 4.5
+    let burning = weight / 10
+    let gramsLeft = grams - (burning * time)
+    let answer = 0
+
+    if (gender === 'Male') {
+      answer = gramsLeft / (weight * 0.7)
+    }
+    if (gender === 'Female') {
+      answer = gramsLeft / (weight * 0.6)
+    }
+    if (answer < 0) {
+      setResult(0)
+    }
+    else {
+    setResult(answer)
+    }
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <>
+    <form>
+      <div className='container'>
+        <h2 className='text-center'>Calculating alcohol blood level</h2>
+      </div>
+      <div className='container'>
+        <label className='form-label'>Weight</label>
+        <input type='text' name='weight' className='form-control' onChange={e=> setWeight(e.target.value)}/>
+      </div>
+      <div className='container'>
+        <label className='form-label'>Bottles</label>
+        <input type='number' name='bottles' className='form-control' onChange={e=> setBottles(e.target.value)}/> 
+      </div>
+      <div className='container'>
+        <label className='form-label'>Time</label>
+        <input type='number' name='time' className='form-control' onChange={e=> setTime(e.target.value)}/>
+      </div>
+    <div className='container'>
+      <p>Gender</p>
+      <div className='form-check'>
+        <input type='radio' name='gender' value='Male' className='form-check-input' defaultChecked onChange={e=> setGender(e.target.value)}/>
+        <label className='form-check-label'>Male</label>
+        </div>
+      <div className='form-check'>      
+        <input type='radio' name='gender' value='Female' className='form-check-input' onChange={e=> setGender(e.target.value)}/>
+        <label className='form-check-label'>Female</label>
+      </div>
+      <div>
+        <output>{result.toFixed(2)}</output>
+      </div>
     </div>
+      <div className='text-center mt-2' >
+      <button type ='button' className='btn btn-primary' onClick={countLevel}>Calculate</button>
+      </div>
+  </form>
+  </>  
   );
 }
 
