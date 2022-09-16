@@ -34,15 +34,15 @@ function App() {
     <>
       <form>
         <div className='container'>
-          <h2 className='text-center'>Calculating alcohol blood level</h2>
+          <h2 className='text-center'>Calculating blood alcohol level</h2>
         </div>
         <div className='container'>
           <label className='form-label'>Weight</label>
-          <input type='number' name='weight' className='form-control' onChange={e => setWeight(e.target.value)} />
+          <input type='number' name='weight' className='form-control shadow p-3 mb-5 bg-body rounded' onChange={e => setWeight(e.target.value)} />
         </div>
         <div className='container'>
           <label className='form-label'>Bottles</label>
-          <select name='bottles' className='form-control' onChange={e => setBottles(e.target.value)}>
+          <select name='bottles' className='form-control shadow p-3 mb-5 bg-body rounded' onChange={e => setBottles(e.target.value)}>
           <option value="0">0</option>
             <option value="1">1</option>
             <option value="2">2</option>
@@ -58,7 +58,7 @@ function App() {
         </div>
         <div className='container'>
           <label className='form-label'>Time</label>
-          <select type='number' name='time' className='form-control' onChange={e => setTime(e.target.value)}>
+          <select type='number' name='time' className='form-control shadow p-3 mb-5 bg-body rounded' onChange={e => setTime(e.target.value)}>
           <option value="0">0</option>
             <option value="1">1h</option>
             <option value="2">2h</option>
@@ -87,7 +87,7 @@ function App() {
           </div>
         </div>
         <div className='text-center mt-2' >
-          <button type='button' className='btn btn-primary' onClick={countLevel}>Calculate</button>
+          <button type='button' class="btn btn-secondary btn-lg" onClick={countLevel}>Calculate</button>
         </div>
       </form>
     </>
