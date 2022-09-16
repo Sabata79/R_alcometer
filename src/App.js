@@ -84,7 +84,7 @@ function App() {
             <label className='form-check-label'>Female</label>
           </div>
           <div>
-            <output>{result.toFixed(2)} Grams left</output>
+            <output>{result.toFixed(2)} Per mille</output>
           </div>
         </div>
         <div className='text-center mt-2' >
